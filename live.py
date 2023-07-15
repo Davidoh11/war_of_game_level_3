@@ -1,6 +1,7 @@
 from guess_game import play as guess_game
 from memory_game import play as memory_game
 from currency_roulette_game import play as currency_roulette_game
+from score import add_score
 
 
 def welcome(name):
