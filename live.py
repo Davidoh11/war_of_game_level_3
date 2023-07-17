@@ -4,6 +4,7 @@ from currency_roulette_game import play as currency_roulette_game
 from score import add_score
 
 
+
 def welcome(name):
     blue = '\033[94m'
     formatted_name = blue + name
@@ -34,7 +35,12 @@ def load_game():
 
     if game_options == 1:
         memory_game(difficulty)
+        add_score(difficulty)  # Call add_score() function to add the score
     elif game_options == 2:
         guess_game(difficulty)
+        add_score(difficulty)
     elif game_options == 3:
         currency_roulette_game(difficulty)
+        add_score(difficulty)
+
+

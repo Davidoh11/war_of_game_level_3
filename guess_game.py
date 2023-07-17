@@ -1,4 +1,5 @@
 import random
+from live import load_game
 
 
 def play(difficulty):
