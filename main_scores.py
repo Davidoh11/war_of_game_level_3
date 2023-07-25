@@ -1,7 +1,9 @@
 from flask import Flask
+
 app = Flask(__name__)
 
 SCORES_FILE_NAME = "scores.txt"
+
 
 def read_score():
     """Reads the score from the scores file."""
@@ -10,6 +12,7 @@ def read_score():
             return file.read()
     except FileNotFoundError:
         return None
+
 
 @app.route('/')
 def score_server():
@@ -40,5 +43,3 @@ def score_server():
 
     return html
 
-if __name__ == '__main__':
-    app.run()

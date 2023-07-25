@@ -17,6 +17,7 @@ def play(difficulty):
     print(f'Your sequence numbers', user_sequence)
     if is_list_equal(sequence_numbers, user_sequence) is True:
         print(f'Congratulations! you memorize all numbers!')
+        return difficulty
     if is_list_equal(sequence_numbers, user_sequence) is False:
         print(f'Sorry! you did not memorize all numbers! sequence_numbers was {sequence_numbers}')
 

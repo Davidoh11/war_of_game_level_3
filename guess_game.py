@@ -1,5 +1,4 @@
 import random
-from live import load_game
 
 
 def play(difficulty):
@@ -10,6 +9,7 @@ def play(difficulty):
 
     if result is True:
         print('Congratulations!, You guessed the correct number')
+        return difficulty
     else:
         print('The number you guessed is wrong !! Please try again !')
 
@@ -34,6 +34,6 @@ def get_guess_from_user(difficulty):
 
 def compare_results(secret_number, guess_num):
     if secret_number == guess_num:
-        return False
+        return True
     else:
         return False
