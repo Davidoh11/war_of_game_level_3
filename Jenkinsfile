@@ -36,7 +36,7 @@ pipeline {
                 // Stop and remove the container
                 sh 'docker-compose down'
                 // Push the updated image to DockerHub
-                sh 'docker push your-dockerhub-username/world-of-games'
+                sh 'docker push davidoh11/world-of-games'
             }
         }
     }
