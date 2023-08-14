@@ -1,42 +1,42 @@
+// Jenkins file
 pipeline {
     agent any
 
     stages {
         stage('Checkout') {
             steps {
+                // Checkout the repository
                 checkout scm
             }
         }
 
         stage('Build') {
             steps {
-                script {
-                    docker.build("python:3.11-slim:${BUILD_NUMBER}")
-                }
+                // Build Docker image
+                sh 'docker build -t world-of-games .'
             }
         }
 
         stage('Run') {
             steps {
-                sh 'docker run -d -p 8777:80 -v $(pwd)/Scores.txt:/Scores.txt python:3.11-slim:${BUILD_NUMBER}'
+                // Run Docker container
+                sh 'docker-compose up -d'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'docker run -v $(pwd)/e2e.py:/e2e.py --network host python:3.11-slim:${BUILD_NUMBER} python e2e.py'
+                // Run tests using e2e.py
+                sh 'python e2e.py'
             }
         }
 
         stage('Finalize') {
             steps {
-                sh 'docker stop $(docker ps -q --filter ancestor=python:3.11-slim:${BUILD_NUMBER})'
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credentials') {
-                        def customImage = docker.image("python:3.11-slim:${BUILD_NUMBER}")
-                        customImage.push()
-                    }
-                }
+                // Stop and remove the container
+                sh 'docker-compose down'
+                // Push the updated image to DockerHub
+                sh 'docker push your-dockerhub-username/world-of-games'
             }
         }
     }

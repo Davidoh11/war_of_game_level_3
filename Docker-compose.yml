@@ -1,9 +1,10 @@
-version: '3.11'
-
+version: '3'
 services:
-  scores:
-    image: scores
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8777:8777"
     volumes:
-      - ./Scores.txt:/Scores.txt
+      - ./scores.txt:/Scores.txt
