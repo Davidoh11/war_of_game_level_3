@@ -6,9 +6,9 @@ green = '\033[92m'
 formatted_name = green + name
 name = str(input(formatted_name))
 
-print(welcome(name))
-load_game()
 
 if __name__ == '__main__':
+    print(welcome(name))
+    load_game()
     app.run('0.0.0.0', debug=True, port=30000)
 

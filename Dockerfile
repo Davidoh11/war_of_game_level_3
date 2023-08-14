@@ -20,4 +20,4 @@ EXPOSE 80
 ENV NAME World
 
 # Run app.py when the container launches
-CMD ["python", "e2e.py"]
+CMD ["python", "main_game.py"]
